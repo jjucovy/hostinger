@@ -1,0 +1,291 @@
+/* North Shore Hebrew Academy — History Department
+   Jon Jucovy course site — shared stylesheet */
+
+:root {
+  --navy: #1b2a4a;
+  --navy-dark: #101b30;
+  --accent: #c4622d;
+  --accent-dark: #a34e21;
+  --ink: #24262b;
+  --paper: #ffffff;
+  --paper-muted: #f5f3ef;
+  --border: #e2ddd3;
+  --max-width: 980px;
+  font-size: 17px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: "Source Sans 3", "Segoe UI", system-ui, -apple-system, sans-serif;
+  color: var(--ink);
+  background: var(--paper-muted);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+  font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+  color: var(--navy);
+  line-height: 1.25;
+  margin-top: 1.4em;
+  margin-bottom: 0.5em;
+}
+h1:first-child, h2:first-child, h3:first-child { margin-top: 0; }
+
+a { color: var(--accent-dark); }
+a:hover { color: var(--accent); }
+img { max-width: 100%; }
+
+/* ---------- Header / nav ---------- */
+
+.site-header {
+  background: var(--navy);
+  color: #fff;
+  border-bottom: 4px solid var(--accent);
+}
+
+.site-header .inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 1.5rem 1.5rem 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.site-header .brand { display: flex; flex-direction: column; gap: 0.15rem; }
+.site-header .school {
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #cfd6e6;
+}
+.site-header .teacher-name {
+  font-family: "Source Serif 4", Georgia, serif;
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: #fff;
+}
+.site-header .dept { font-size: 0.95rem; color: #cfd6e6; }
+.site-header .contact-line { font-size: 0.85rem; color: #cfd6e6; }
+.site-header .contact-line a { color: #dfe3ee; }
+
+.site-nav { background: var(--navy-dark); }
+.site-nav .inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+.site-nav a {
+  display: inline-block;
+  padding: 0.75rem 0.85rem;
+  color: #e7eaf2;
+  text-decoration: none;
+  font-size: 0.88rem;
+  letter-spacing: 0.02em;
+  border-bottom: 3px solid transparent;
+  white-space: nowrap;
+}
+.site-nav a:hover, .site-nav a[aria-current="page"] {
+  color: #fff;
+  border-bottom-color: var(--accent);
+}
+
+/* breadcrumb */
+.breadcrumb {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0.85rem 1.5rem 0;
+  font-size: 0.85rem;
+  color: #6b6e76;
+}
+.breadcrumb a { color: #6b6e76; text-decoration: none; }
+.breadcrumb a:hover { color: var(--accent-dark); text-decoration: underline; }
+
+/* ---------- Layout ---------- */
+
+main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 1.25rem 1.5rem 3.5rem;
+}
+
+.card {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 2rem;
+  margin-bottom: 1.75rem;
+  box-shadow: 0 1px 3px rgba(20, 20, 30, 0.04);
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.78rem;
+  color: var(--accent-dark);
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+.lede { font-size: 1.1rem; color: #3d4048; }
+
+/* ---------- Hero (home / hub pages) ---------- */
+
+.hero {
+  background: linear-gradient(135deg, var(--navy) 0%, #24365e 60%, var(--accent-dark) 130%);
+  color: #fff;
+}
+.hero .inner { max-width: var(--max-width); margin: 0 auto; padding: 3rem 1.5rem; }
+.hero h1 { color: #fff; font-size: 2.2rem; margin-bottom: 0.6rem; margin-top: 0; }
+.hero p { color: #dfe3ee; max-width: 42rem; font-size: 1.05rem; margin: 0; }
+
+/* ---------- Card grid ---------- */
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.1rem;
+  margin: 1.25rem 0 1.75rem;
+}
+
+.tile {
+  display: block;
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.35rem;
+  text-decoration: none;
+  color: var(--ink);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+.tile:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(20, 20, 30, 0.08);
+  border-color: var(--accent);
+}
+.tile .tile-label {
+  font-family: "Source Serif 4", Georgia, serif;
+  font-size: 1.08rem;
+  color: var(--navy);
+  margin-bottom: 0.3rem;
+}
+.tile .tile-desc { font-size: 0.9rem; color: #5b5e66; }
+
+/* ---------- Section navigation (in-course subpages) ---------- */
+
+.section-nav {
+  background: var(--paper-muted);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0;
+}
+.section-nav h2 { font-size: 1rem; margin: 0 0 0.6rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.section-nav ul { columns: 2; column-gap: 2rem; margin: 0; padding-left: 1.2rem; }
+.section-nav li { break-inside: avoid; margin-bottom: 0.35rem; font-size: 0.95rem; }
+@media (max-width: 640px) { .section-nav ul { columns: 1; } }
+
+/* ---------- Reading / document pages ---------- */
+
+.source-note {
+  background: var(--paper-muted);
+  border-left: 4px solid var(--accent);
+  padding: 1rem 1.25rem;
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+}
+
+.download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--accent);
+  color: #fff;
+  padding: 0.7rem 1.25rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.download-btn:hover { background: var(--accent-dark); color: #fff; }
+
+.questions {
+  background: var(--paper-muted);
+  border-radius: 10px;
+  padding: 1.5rem 1.75rem;
+  margin-top: 2rem;
+}
+.questions h2, .questions h3 { margin-top: 0; margin-bottom: 0.75rem; }
+.questions ol { padding-left: 1.25rem; }
+.questions li { margin-bottom: 0.6rem; }
+
+/* ---------- Table (syllabi etc.) ---------- */
+
+table.plain, .card table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+table.plain th, table.plain td, .card table th, .card table td {
+  text-align: left;
+  padding: 0.5rem 0.7rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+
+/* ---------- Form ---------- */
+
+form.contact-form label {
+  display: block;
+  font-weight: 600;
+  margin: 1rem 0 0.35rem;
+  font-size: 0.92rem;
+}
+form.contact-form input,
+form.contact-form select,
+form.contact-form textarea {
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 1rem;
+}
+form.contact-form button {
+  margin-top: 1.5rem;
+  background: var(--navy);
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+form.contact-form button:hover { background: var(--navy-dark); }
+
+/* ---------- Footer ---------- */
+
+.site-footer { background: var(--navy-dark); color: #b9c0d4; font-size: 0.88rem; }
+.site-footer .inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 1.75rem 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.site-footer a { color: #dfe3ee; }
+
+@media (max-width: 640px) {
+  .site-header .inner { flex-direction: column; align-items: flex-start; }
+  .hero h1 { font-size: 1.7rem; }
+}
