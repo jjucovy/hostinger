@@ -18,7 +18,7 @@
 html { scroll-behavior: smooth; }
 
 body {
-  margin: 0;
+  margin: 70;
   font-family: "Source Sans 3", "Segoe UI", system-ui, -apple-system, sans-serif;
   color: var(--ink);
   background: var(--paper-muted);
