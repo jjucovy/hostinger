@@ -18,7 +18,7 @@
 html { scroll-behavior: smooth; }
 
 body {
-  margin: 70;
+  margin: 0;
   font-family: "Source Sans 3", "Segoe UI", system-ui, -apple-system, sans-serif;
   color: var(--ink);
   background: var(--paper-muted);
@@ -66,7 +66,7 @@ img { max-width: 100%; }
 }
 .site-header .teacher-name {
   font-family: "Source Serif 4", Georgia, serif;
-  font-size: 1.9rem;
+  font-size: 9.9rem;
   font-weight: 700;
   color: #fff;
 }
