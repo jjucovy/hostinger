@@ -1,0 +1,367 @@
+/* ==========================================================================
+   Jjucovy2-matching theme for the Weebly/"Birdseye" export (index.html).
+   This file targets the ORIGINAL page's own class names (wsite-*, birdseye-*)
+   and restyles them to the same design system used across Jjucovy2/:
+   navy header, orange accent, serif headings, card-style content blocks.
+
+   Loaded LAST in <head>, after main_style.css and Weebly's own inline
+   <style> block (which sets several rules with !important). Many rules
+   below repeat !important for the same reason -- to reliably win that
+   cascade rather than depend on load order alone. Colors are hardcoded
+   (no CSS custom properties) for maximum compatibility.
+
+   Palette: navy #1b2a4a / navy-dark #101b30 / accent #c4622d /
+   accent-dark #a34e21 / ink #24262b / paper #ffffff / paper-muted #f5f3ef /
+   border #e2ddd3 / max content width 980px.
+   ========================================================================== */
+
+/* ---------- Base ---------- */
+
+html, body {
+  background: #f5f3ef !important;
+}
+
+body {
+  font-family: "Source Sans 3", "Segoe UI", system-ui, -apple-system, sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 16px !important;
+  color: #24262b !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: #a34e21;
+}
+a:hover {
+  color: #c4622d;
+}
+
+/* ---------- Header / nav (.birdseye-header) ---------- */
+
+.birdseye-header {
+  position: static !important;
+  top: auto !important;
+  width: 100% !important;
+  padding: 0 !important;
+  background: #1b2a4a !important;
+  color: #ffffff !important;
+  border-bottom: 4px solid #c4622d !important;
+  box-shadow: none !important;
+}
+
+.birdseye-header .nav-wrap .container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 1.25rem 1.5rem;
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  width: 100%;
+  height: auto !important;
+  max-height: none !important;
+  box-sizing: border-box;
+}
+
+/* Weebly's own theme fades .logo/.desktop-nav in via a JS-added
+   "fade-in" class on <body>; force full visibility so the header never
+   depends on that script having run. */
+body:not(.wsite-editor) .logo,
+body:not(.wsite-editor) .desktop-nav {
+  opacity: 1 !important;
+}
+
+.birdseye-header .logo {
+  display: block !important;
+  vertical-align: middle;
+}
+
+.birdseye-header .logo #wsite-title {
+  display: block !important;
+  font-family: "Source Serif 4", Georgia, serif !important;
+  font-weight: 700 !important;
+  font-size: 1.9rem !important;
+  text-transform: none !important;
+  letter-spacing: normal !important;
+  color: #ffffff !important;
+  max-width: none !important;
+}
+
+.birdseye-header .logo a:hover {
+  opacity: 0.85;
+}
+
+.nav.desktop-nav {
+  display: block !important;
+  vertical-align: middle;
+}
+
+.nav .wsite-menu-default {
+  float: none !important;
+  max-width: none !important;
+  display: flex !important;
+  flex-wrap: wrap;
+  gap: 0.1rem;
+}
+
+.nav .wsite-menu-item-wrap {
+  display: block !important;
+  margin: 0 !important;
+}
+
+.nav .wsite-menu-item {
+  font-family: "Source Sans 3", sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 0.88rem !important;
+  letter-spacing: 0.02em !important;
+  text-transform: none !important;
+  color: #e7eaf2 !important;
+  padding: 0.75rem 0.85rem !important;
+  border: none !important;
+  border-bottom: 3px solid transparent !important;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.nav li:not(.wsite-nav-cart)#active > .wsite-menu-item,
+.nav .wsite-menu-item-wrap > .wsite-menu-item:hover {
+  color: #ffffff !important;
+  border-bottom-color: #c4622d !important;
+  opacity: 1 !important;
+}
+
+/* dropdown submenu (e.g. "Boom and Bust" -> Tooze / DeLong / FRED) */
+
+#wsite-menus .wsite-menu,
+.wsite-menu-wrap .wsite-menu {
+  background: #ffffff !important;
+  border: 1px solid #e2ddd3 !important;
+  box-shadow: 0 10px 24px rgba(20, 20, 30, 0.12) !important;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+#wsite-menus .wsite-menu li a,
+.wsite-menu-wrap .wsite-menu-subitem {
+  background: transparent !important;
+  color: #24262b !important;
+  font-family: "Source Sans 3", sans-serif !important;
+  font-weight: 500 !important;
+  text-transform: none !important;
+  letter-spacing: normal !important;
+  border: none !important;
+}
+
+#wsite-menus .wsite-menu li a:hover,
+.wsite-menu-wrap li:hover > .wsite-menu-subitem {
+  background: #f5f3ef !important;
+  color: #a34e21 !important;
+}
+
+.hamburger span,
+.hamburger span:before,
+.hamburger span:after {
+  background: #ffffff !important;
+}
+
+/* ---------- Main content area ---------- */
+
+.no-header-page .main-wrap {
+  padding-top: 0 !important;
+}
+
+.main-wrap {
+  background: #f5f3ef !important;
+}
+
+.main-wrap .container {
+  max-width: 980px;
+  padding: 2.5rem 1.5rem !important;
+  box-sizing: border-box;
+}
+
+.wsite-section {
+  height: auto !important;
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+.wsite-section-content {
+  background: #ffffff !important;
+  border: 1px solid #e2ddd3;
+  border-radius: 10px;
+  padding: 2rem;
+  margin-bottom: 1.75rem;
+  box-shadow: 0 1px 3px rgba(20, 20, 30, 0.04);
+}
+
+.wsite-section-content .container {
+  padding: 0 !important;
+  max-width: none;
+}
+
+/* Headings inside content (h2.wsite-content-title, incl. legacy <font> tags) */
+
+#wsite-content h2.wsite-content-title,
+.wsite-content-title {
+  font-family: "Source Serif 4", Georgia, serif !important;
+  font-weight: 700 !important;
+  color: #1b2a4a !important;
+  line-height: 1.25 !important;
+  margin: 0 auto 0.5rem !important;
+  text-transform: none !important;
+}
+
+#wsite-content h2.wsite-content-title font,
+.wsite-content-title font {
+  font-family: inherit !important;
+  font-size: inherit !important;
+  color: inherit !important;
+}
+
+/* first heading in the About block ("ABOUT ME") reads as an eyebrow label */
+#wsite-content .wsite-multicol-col:first-child h2.wsite-content-title:first-of-type {
+  font-family: "Source Sans 3", sans-serif !important;
+  font-size: 0.78rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  color: #a34e21 !important;
+}
+
+/* second heading ("Jon Jucovy") is the real page title */
+#wsite-content .wsite-multicol-col:first-child h2.wsite-content-title:nth-of-type(2) {
+  font-size: 2.1rem !important;
+}
+
+/* Body copy */
+
+#wsite-content div.paragraph,
+#wsite-content p {
+  font-family: "Source Sans 3", sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 1.05rem !important;
+  line-height: 1.65 !important;
+  color: #24262b !important;
+  margin: 0 auto 1rem !important;
+}
+
+#wsite-content div.paragraph a,
+#wsite-content p a {
+  color: #a34e21 !important;
+  font-weight: 600 !important;
+}
+#wsite-content div.paragraph a:hover,
+#wsite-content p a:hover {
+  opacity: 1 !important;
+  color: #c4622d !important;
+}
+
+/* ---------- Images ---------- */
+
+.wsite-image img {
+  border-radius: 10px;
+  border: 1px solid #e2ddd3;
+}
+
+/* Profile photo (first content section): keep natural proportions */
+.wsite-section-wrap:first-of-type .wsite-image img {
+  width: 100% !important;
+  height: auto !important;
+  max-width: 320px !important;
+}
+
+/* Photo gallery (second content section): uniform grid tiles */
+.wsite-section-wrap:nth-of-type(2) .wsite-multicol-table {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+.wsite-section-wrap:nth-of-type(2) .wsite-multicol-tbody,
+.wsite-section-wrap:nth-of-type(2) .wsite-multicol-tr {
+  display: contents !important;
+}
+.wsite-section-wrap:nth-of-type(2) .wsite-multicol-col {
+  display: block !important;
+  width: 100% !important;
+  padding: 0 !important;
+}
+.wsite-section-wrap:nth-of-type(2) .wsite-image {
+  text-align: center !important;
+  padding: 0 !important;
+  margin: 0 0 1rem !important;
+}
+.wsite-section-wrap:nth-of-type(2) .wsite-image img {
+  width: 100% !important;
+  height: 220px !important;
+  object-fit: cover !important;
+  max-width: none !important;
+}
+
+/* ---------- Footer ---------- */
+
+.footer-wrap {
+  background: #101b30 !important;
+  color: #b9c0d4 !important;
+}
+
+.footer-wrap .container {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+/* The five stub column headings (Home/About/Services/Menu/Contact) carry
+   no real links in the source page; de-emphasize rather than remove them. */
+.wsite-elements.wsite-footer h2.wsite-content-title {
+  font-family: "Source Sans 3", sans-serif !important;
+  font-size: 0.78rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  color: #6b7590 !important;
+}
+
+.footer-wrap .paragraph {
+  font-family: "Source Sans 3", sans-serif !important;
+  font-size: 0.88rem !important;
+  color: #dfe3ee !important;
+}
+
+.footer-wrap .cc_links {
+  color: #6b7590 !important;
+  font-size: 0.78rem !important;
+}
+.footer-wrap .cc_links a {
+  color: #8891ab !important;
+}
+
+/* ---------- Mobile nav ---------- */
+
+/* Defensive: guarantee the mobile flyout stays hidden above the 992px
+   breakpoint even if main_style.css's own media query is ever unavailable. */
+@media (min-width: 993px) {
+  #navMobile.mobile-nav {
+    display: none !important;
+  }
+}
+
+.mobile-nav {
+  background: #ffffff !important;
+}
+.mobile-nav .wsite-menu-item {
+  color: #24262b !important;
+}
+.mobile-nav li.wsite-menu-item-wrap#active > a.wsite-menu-item,
+.mobile-nav li.wsite-menu-item-wrap > a.wsite-menu-item:hover {
+  background: #f5f3ef !important;
+  color: #a34e21 !important;
+}
+
+@media (max-width: 640px) {
+  .birdseye-header .nav-wrap .container {
+    padding: 1rem;
+  }
+  #wsite-content .wsite-multicol-col:first-child h2.wsite-content-title:nth-of-type(2) {
+    font-size: 1.7rem !important;
+  }
+}
