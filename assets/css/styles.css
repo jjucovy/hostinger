@@ -133,7 +133,7 @@ body:not(.wsite-editor) .desktop-nav {
 .dropdown-content a:hover {background-color: #ddd;}
 
 /* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {display: block;}
+.dropdown:hover .dropdown-content {display: block;} !important
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {background-color: #3e8e41;}
@@ -171,7 +171,6 @@ body:not(.wsite-editor) .desktop-nav {
   opacity: 1 !important;
 }
 
-/* dropdown submenu (e.g. "Boom and Bust" -> Tooze / DeLong / FRED) */
 
 #wsite-menus .wsite-menu,
 .wsite-menu-wrap .wsite-menu {
