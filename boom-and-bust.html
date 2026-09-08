@@ -1,409 +1,188 @@
-/* ==========================================================================
-   Jjucovy2-matching theme for the Weebly/"Birdseye" export (index.html).
-   This file targets the ORIGINAL page's own class names (wsite-*, birdseye-*)
-   and restyles them to the same design system used across Jjucovy2/:
-   navy header, orange accent, serif headings, card-style content blocks.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Boom and Bust 2026–27 — Jon Jucovy</title>
+<meta name="description" content="History of Economic Booms and Busts — course syllabus, 2026–27.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="Jjucovy2/assets/css/style.css">
+</head>
+<body>
 
-   Loaded LAST in <head>, after main_style.css and Weebly's own inline
-   <style> block (which sets several rules with !important). Many rules
-   below repeat !important for the same reason -- to reliably win that
-   cascade rather than depend on load order alone. Colors are hardcoded
-   (no CSS custom properties) for maximum compatibility.
+<header class="site-header">
+  <div class="inner">
+    <div class="brand">
+      <span class="school">North Shore Hebrew Academy</span>
+      <span class="teacher-name">Jon Jucovy</span>
+      <span class="dept">History of Economic Booms and Busts</span>
+    </div>
+    <div class="contact-line"><a href="index.html">jucovy.com</a></div>
+  </div>
+</header>
 
-   Palette: navy #1b2a4a / navy-dark #101b30 / accent #c4622d /
-   accent-dark #a34e21 / ink #24262b / paper #ffffff / paper-muted #f5f3ef /
-   border #e2ddd3 / max content width 980px.
-   ========================================================================== */
+  
+  
+<nav class="site-nav" aria-label="Primary">
+  <div class="inner">
+    <a href="https://www.jjucovy.org/">Home</a>
+    <a href="boom-and-bust.html" aria-current="page">Boom and Bust</a>
+    <a href="https://www.jjucovy.org/war_film-202367.html">History of War Movies</a>
+    <a href="Jjucovy2/european-and-jewish-history.html">European and Jewish History</a>
+    <a href="Jjucovy2/writing/research-paper-structure.html">Research Paper Structure</a>
+  </div>
+</nav>
+<div class="breadcrumb"><a href="index.html">Home</a> &rsaquo; Boom and Bust</div>
 
-/* ---------- Base ---------- */
-html, body {
-  background: #f5f3ef !important;
-}
+<main>
 
-body {
-  font-family: "Source Sans 3", "Segoe UI", system-ui, -apple-system, sans-serif !important;
-  font-weight: 400 !important;
-  font-size: 16px !important;
-  color: #24262b !important;
-  -webkit-font-smoothing: antialiased;
-}
+<div class="hero">
+  <div class="inner">
+    <h1>History of Economic Booms and Busts</h1>
+    <p>2026&ndash;27 &middot; A survey of financial crisis from the 17th-century Dutch capital markets to 2008,
+    read alongside the foundational works of political economy that each crisis provoked or explained.</p>
+  </div>
+</div>
 
-a {
-  color: #a34e21;
-}
-a:hover {
-  color: #c4622d;
-}
+<div class="card">
+<p class="eyebrow">Course description</p>
+<p>The emergence over the past 500 years of economic practices and arrangements in which owners of capital
+organize the production of commodities has produced the unimaginable growth of individual and social wealth
+&mdash; and a recurring cycle of boom and bust. Financial crises appeared with the first capital markets in the
+17th-century Netherlands and have been with us ever since. This course examines notable episodes of financial
+crisis with an emphasis on the United States since 1860, and assigns the foundational works of political
+economy &mdash; Smith, Say, Marx, Bagehot, Veblen, Weber, Keynes, Hayek, Polanyi, and Minsky &mdash;
+chronologically, at the moment in history when their ideas were forged or when events most directly illuminate
+their arguments.</p>
+</div>
 
-/* ---------- Header / nav (.birdseye-header) ---------- */
+<div class="card">
+<p class="eyebrow">Teaching goals</p>
+<ul>
+<li>Understand major episodes of financial crisis from the 17th century to the present</li>
+<li>Engage critically with foundational texts in political economy and economic historiography</li>
+<li>Analyze primary sources: government reports, speeches, legislation, newspaper accounts, and statistical data</li>
+<li>Evaluate competing historiographic interpretations through structured debate and discussion</li>
+<li>Apply course frameworks to produce an original, evidence-based research argument</li>
+</ul>
+</div>
 
-.birdseye-header {
-  position: static !important;
-  top: auto !important;
-  width: 100% !important;
-  padding: 0 !important;
-  background: #1b2a4a !important;
-  color: #ffffff !important;
-  border-bottom: 4px solid #c4622d !important;
-  box-shadow: none !important;
-}
+<div class="card">
+<p class="eyebrow">Assessment &amp; grading</p>
+<table class="plain">
+<tr><th>Component</th><th>Weight</th><th>Description</th></tr>
+<tr><td>Research Paper</td><td>25%</td><td>Semester-long project: a 15&ndash;20 page research paper on a
+financial crisis or economic phenomenon. Milestones: proposal (Week 4), annotated bibliography (Week 10),
+draft (Week 16), final paper (Week 20).</td></tr>
+<tr><td>Bretton Woods Simulation</td><td>15%</td><td>Active participation in the multi-nation Bretton Woods
+simulation (Weeks 11&ndash;12) plus a 4-page written reflection.</td></tr>
+<tr><td>Midterm Examination</td><td>15%</td><td>In-class exam at Week 10: primary source analysis,
+historiographic essay, short identifications.</td></tr>
+<tr><td>Final Examination</td><td>15%</td><td>Cumulative exam at Week 20 emphasizing cross-crisis comparative
+analysis.</td></tr>
+<tr><td>Homework / Class Preparation &amp; Engagement</td><td>25%</td><td>&nbsp;</td></tr>
+</table>
 
-.birdseye-header .nav-wrap .container {
-  max-width: 980px;
-  margin: 0 auto;
-  padding: 1.25rem 1.5rem;
-  display: flex !important;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 0.5rem 1.5rem;
-  width: 100%;
-  height: auto !important;
-  max-height: none !important;
-  box-sizing: border-box;
-}
+<h2>Grading scale</h2>
+<table class="plain">
+<tr><td>A (93&ndash;100)</td><td>A&ndash; (90&ndash;92)</td><td>B+ (87&ndash;89)</td><td>B (83&ndash;86)</td><td>B&ndash; (80&ndash;82)</td></tr>
+<tr><td>C+ (77&ndash;79)</td><td>C (73&ndash;76)</td><td>C&ndash; (70&ndash;72)</td><td>D+ (67&ndash;69)</td><td>D (63&ndash;66)</td></tr>
+<tr><td>D&ndash; (60&ndash;62)</td><td>F (&lt;60)</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+</table>
+</div>
 
-/* Weebly's own theme fades .logo/.desktop-nav in via a JS-added
-   "fade-in" class on <body>; force full visibility so the header never
-   depends on that script having run. */
-body:not(.wsite-editor) .logo,
-body:not(.wsite-editor) .desktop-nav {
-  opacity: 1 !important;
-}
+<div class="card">
+<p class="eyebrow">Course policies</p>
+<h2>Attendance</h2>
+<p>More than four unexcused absences lower your final grade by one letter grade per additional absence. Arrive
+having completed all readings.</p>
+<h2>Late work</h2>
+<p>Papers lose one-third of a letter grade per day late. Extensions must be requested 48 hours in advance.</p>
+<h2>Academic integrity</h2>
+<p>All submitted work must be your own. Plagiarism or AI-generated text submitted as original work will be
+referred to the Academic Integrity Board.</p>
+<h2>Discussion standards</h2>
+<p>We engage ideas that are politically and morally contested. Argue from evidence, engage opposing views
+charitably, and distinguish empirical claims from normative ones.</p>
+</div>
 
-.birdseye-header .logo {
-  display: block !important;
-  vertical-align: middle;
-}
+<div class="card">
+<p class="eyebrow">
+<a href="boom-and-bust-schedule.html" aria-current="page">Boom and Bust SCHEDULE</a>
+</p>
+</div>  
+  
+<div class="card">
+<p class="eyebrow">The semester research paper</p>
+<p>The research paper is the intellectual centerpiece of the course. Students choose an original question in
+economic history and pursue it through four milestone submissions.</p>
 
-.birdseye-header .logo #wsite-title {
-  display: block !important;
-  font-family: "Source Serif 4", Georgia, serif !important;
-  font-weight: 700 !important;
-  font-size: 1.9rem !important;
-  text-transform: none !important;
-  letter-spacing: normal !important;
-  color: #ffffff !important;
-  max-width: none !important;
-}
+<h2>Milestone 1 &mdash; Proposal (Week 3, 2 pages)</h2>
+<ul>
+<li>Identify the crisis or phenomenon you will study</li>
+<li>State a preliminary research question</li>
+<li>List 3&ndash;5 potential primary sources and explain their evidentiary value</li>
+<li>Identify the historiographic debate your paper will engage</li>
+</ul>
 
-.birdseye-header .logo a:hover {
-  opacity: 0.85;
-}
+<h2>Milestone 2 &mdash; Annotated Bibliography (Week 8, 10+ sources)</h2>
+<ul>
+<li>At least 4 primary sources with annotations explaining their value as evidence</li>
+<li>At least 6 secondary/journal sources with annotations explaining their arguments and your response</li>
+</ul>
 
-.nav.desktop-nav {
-  display: block !important;
-  vertical-align: middle;
-}
+<h2>Milestone 3 &mdash; Draft (Week 17, 10&ndash;12 pages)</h2>
+<ul>
+<li>Full argumentative structure: introduction with thesis, body, conclusion</li>
+<li>Primary source evidence integrated and analyzed throughout</li>
+<li>Engagement with at least two competing interpretations</li>
+</ul>
 
-/* Dropdown Button */
-.dropbtn {
-  background-color: #04AA6D;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-}
+<h2>Milestone 4 &mdash; Final Paper (Week 20, 15&ndash;20 pages)</h2>
+<ul>
+<li>Polished argument with full footnotes in Chicago style</li>
+<li>Original analysis of primary sources</li>
+<li>Sustained engagement with the historiographic debate</li>
+</ul>
 
-.nav .wsite-menu-default {
-  float: none !important;
-  max-width: none !important;
-  display: flex !important;
-  flex-wrap: wrap;
-  gap: 0.1rem;
-}
+<h2>Suggested topics</h2>
+<p>The Panic of 1819; the Bank Wars; the Panic of 1907; the Florida real estate bubble of the 1920s;
+Reconstruction-era railroad finance; the New Deal and economic recovery; postwar European monetary
+integration; the Nixon Shocks; stagflation; the Japanese asset bubble (1986&ndash;91); the origins of credit
+default swaps; the euro crisis; post-2008 inequality; or the economic consequences of any major war.</p>
+</div>
 
-.nav .wsite-menu-item-wrap {
-  display: block !important;
-  margin: 0 !important;
-}
+<div class="card-grid">
+  <a class="tile" href="boom-and-bust-schedule.html">
+    <div class="tile-label">Course Schedule &amp; Readings</div>
+    <div class="tile-desc">The full 20-week reading schedule, supplementary readings, and citation list.</div>
+  </a>
+  <a class="tile" href="https://adamtooze.substack.com/" target="_blank" rel="noopener">
+    <div class="tile-label">Adam Tooze &mdash; Chartbook</div>
+    <div class="tile-desc">Recommended newsletter on economic history and current affairs.</div>
+  </a>
+  <a class="tile" href="https://braddelong.substack.com/" target="_blank" rel="noopener">
+    <div class="tile-label">Brad DeLong &mdash; Grasping Reality</div>
+    <div class="tile-desc">Recommended newsletter on economic history and current affairs.</div>
+  </a>
+  <a class="tile" href="https://fred.stlouisfed.org/" target="_blank" rel="noopener">
+    <div class="tile-label">FRED</div>
+    <div class="tile-desc">Federal Reserve Economic Data &mdash; the standard source for U.S. economic statistics.</div>
+  </a>
+</div>
 
-.nav .wsite-menu-item {
-  font-family: "Source Sans 3", sans-serif !important;
-  font-weight: 600 !important;
-  font-size: 0.88rem !important;
-  letter-spacing: 0.02em !important;
-  text-transform: none !important;
-  color: #e7eaf2 !important;
-  padding: 0.75rem 0.85rem !important;
-  border: none !important;
-  border-bottom: 3px solid transparent !important;
-  transition: color 0.15s ease, border-color 0.15s ease;
-}
+<div class="source-note">Syllabus subject to revision. Students will be notified of any changes in writing.</div>
 
-.nav li:not(.wsite-nav-cart)#active > .wsite-menu-item,
-.nav .wsite-menu-item-wrap > .wsite-menu-item:hover {
-  color: #ffffff !important;
-  border-bottom-color: #c4622d !important;
-  opacity: 1 !important;
-}
+</main>
 
+<footer class="site-footer">
+  <div class="inner">
+    <span>Jon Jucovy &middot; North Shore Hebrew Academy</span>
+    <span>&copy; 2015&ndash;2026 Jon Jucovy. All rights reserved.</span>
+  </div>
+</footer>
 
-#wsite-menus .wsite-menu,
-.wsite-menu-wrap .wsite-menu {
-  background: #ffffff !important;
-  border: 1px solid #e2ddd3 !important;
-  box-shadow: 0 10px 24px rgba(20, 20, 30, 0.12) !important;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-#wsite-menus .wsite-menu li a,
-.wsite-menu-wrap .wsite-menu-subitem {
-  background: transparent !important;
-  color: #24262b !important;
-  font-family: "Source Sans 3", sans-serif !important;
-  font-weight: 500 !important;
-  text-transform: none !important;
-  letter-spacing: normal !important;
-  border: none !important;
-}
-
-#wsite-menus .wsite-menu li a:hover,
-.wsite-menu-wrap li:hover > .wsite-menu-subitem {
-  background: #f5f3ef !important;
-  color: #a34e21 !important;
-}
-
-.hamburger span,
-.hamburger span:before,
-.hamburger span:after {
-  background: #ffffff !important;
-}
-
-/* ---------- Main content area ---------- */
-
-.no-header-page .main-wrap {
-  padding-top: 0 !important;
-}
-
-.main-wrap {
-  background: #f5f3ef !important;
-}
-
-.main-wrap .container {
-  max-width: 980px;
-  padding: 2.5rem 1.5rem !important;
-  box-sizing: border-box;
-}
-
-.wsite-section {
-  height: auto !important;
-  background: transparent !important;
-  background-color: transparent !important;
-}
-
-.wsite-section-content {
-  background: #ffffff !important;
-  border: 1px solid #e2ddd3;
-  border-radius: 10px;
-  padding: 2rem;
-  margin-bottom: 1.75rem;
-  box-shadow: 0 1px 3px rgba(20, 20, 30, 0.04);
-}
-
-.wsite-section-content .container {
-  padding: 0 !important;
-  max-width: none;
-}
-
-/* Headings inside content (h2.wsite-content-title, incl. legacy <font> tags) */
-
-#wsite-content h2.wsite-content-title,
-.wsite-content-title {
-  font-family: "Source Serif 4", Georgia, serif !important;
-  font-weight: 700 !important;
-  color: #1b2a4a !important;
-  line-height: 1.25 !important;
-  margin: 0 auto 0.5rem !important;
-  text-transform: none !important;
-}
-
-#wsite-content h2.wsite-content-title font,
-.wsite-content-title font {
-  font-family: inherit !important;
-  font-size: inherit !important;
-  color: inherit !important;
-}
-
-/* first heading in the About block ("ABOUT ME") reads as an eyebrow label */
-#wsite-content .wsite-multicol-col:first-child h2.wsite-content-title:first-of-type {
-  font-family: "Source Sans 3", sans-serif !important;
-  font-size: 0.78rem !important;
-  font-weight: 700 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.08em !important;
-  color: #a34e21 !important;
-}
-
-/* second heading ("Jon Jucovy") is the real page title */
-#wsite-content .wsite-multicol-col:first-child h2.wsite-content-title:nth-of-type(2) {
-  font-size: 2.1rem !important;
-}
-
-/* Body copy */
-
-#wsite-content div.paragraph,
-#wsite-content p {
-  font-family: "Source Sans 3", sans-serif !important;
-  font-weight: 400 !important;
-  font-size: 1.05rem !important;
-  line-height: 1.65 !important;
-  color: #24262b !important;
-  margin: 0 auto 1rem !important;
-}
-
-#wsite-content div.paragraph a,
-#wsite-content p a {
-  color: #a34e21 !important;
-  font-weight: 600 !important;
-}
-#wsite-content div.paragraph a:hover,
-#wsite-content p a:hover {
-  opacity: 1 !important;
-  color: #c4622d !important;
-}
-
-/* ---------- Images ---------- */
-
-.wsite-image img {
-  border-radius: 10px;
-  border: 1px solid #e2ddd3;
-}
-
-/* Profile photo (first content section): keep natural proportions */
-.wsite-section-wrap:first-of-type .wsite-image img {
-  width: 100% !important;
-  height: auto !important;
-  max-width: 320px !important;
-}
-
-/* Photo gallery (second content section): uniform grid tiles */
-.wsite-section-wrap:nth-of-type(2) .wsite-multicol-table {
-  display: grid !important;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 1rem;
-}
-.wsite-section-wrap:nth-of-type(2) .wsite-multicol-tbody,
-.wsite-section-wrap:nth-of-type(2) .wsite-multicol-tr {
-  display: contents !important;
-}
-.wsite-section-wrap:nth-of-type(2) .wsite-multicol-col {
-  display: block !important;
-  width: 100% !important;
-  padding: 0 !important;
-}
-.wsite-section-wrap:nth-of-type(2) .wsite-image {
-  text-align: center !important;
-  padding: 0 !important;
-  margin: 0 0 1rem !important;
-}
-.wsite-section-wrap:nth-of-type(2) .wsite-image img {
-  width: 100% !important;
-  height: 220px !important;
-  object-fit: cover !important;
-  max-width: none !important;
-}
-
-/* ---------- Footer ---------- */
-
-.footer-wrap {
-  background: #101b30 !important;
-  color: #b9c0d4 !important;
-}
-
-.footer-wrap .container {
-  max-width: 980px;
-  margin: 0 auto;
-}
-
-/* The five stub column headings (Home/About/Services/Menu/Contact) carry
-   no real links in the source page; de-emphasize rather than remove them. */
-.wsite-elements.wsite-footer h2.wsite-content-title {
-  font-family: "Source Sans 3", sans-serif !important;
-  font-size: 0.78rem !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.08em !important;
-  text-transform: uppercase !important;
-  color: #6b7590 !important;
-}
-
-.footer-wrap .paragraph {
-  font-family: "Source Sans 3", sans-serif !important;
-  font-size: 0.88rem !important;
-  color: #dfe3ee !important;
-}
-
-.footer-wrap .cc_links {
-  color: #6b7590 !important;
-  font-size: 0.78rem !important;
-}
-.footer-wrap .cc_links a {
-  color: #8891ab !important;
-}
-
-
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-/* Links inside the dropdown */
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #ddd;}
-
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {display: block;} !important
-
-/* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {background-color: #3e8e41;}
-
-
-/* ---------- Mobile nav ---------- */
-
-/* Defensive: guarantee the mobile flyout stays hidden above the 992px
-   breakpoint even if main_style.css's own media query is ever unavailable. */
-@media (min-width: 993px) {
-  #navMobile.mobile-nav {
-    display: none !important;
-  }
-}
-
-.mobile-nav {
-  background: #ffffff !important;
-}
-.mobile-nav .wsite-menu-item {
-  color: #24262b !important;
-}
-.mobile-nav li.wsite-menu-item-wrap#active > a.wsite-menu-item,
-.mobile-nav li.wsite-menu-item-wrap > a.wsite-menu-item:hover {
-  background: #f5f3ef !important;
-  color: #a34e21 !important;
-}
-
-@media (max-width: 640px) {
-  .birdseye-header .nav-wrap .container {
-    padding: 1rem;
-  }
-  #wsite-content .wsite-multicol-col:first-child h2.wsite-content-title:nth-of-type(2) {
-    font-size: 1.7rem !important;
-  }
-}
+</body>
+</html>
