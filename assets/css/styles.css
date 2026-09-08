@@ -91,11 +91,11 @@ body:not(.wsite-editor) .desktop-nav {
   opacity: 0.85;
 }
 
-.nav.desktop-nav {
+/*.nav.desktop-nav {
   display: block !important;
   vertical-align: middle;
 }
-
+*/
 /* Dropdown Button */
 .dropbtn {
   background-color: #04AA6D;
@@ -113,7 +113,7 @@ body:not(.wsite-editor) .desktop-nav {
   gap: 0.1rem;
 }
 
-.nav .wsite-menu-item-wrap {
+/*.nav .wsite-menu-item-wrap {
   display: block !important;
   margin: 0 !important;
 }
@@ -164,7 +164,7 @@ body:not(.wsite-editor) .desktop-nav {
   background: #f5f3ef !important;
   color: #a34e21 !important;
 }
-
+*/
 .hamburger span,
 .hamburger span:before,
 .hamburger span:after {
