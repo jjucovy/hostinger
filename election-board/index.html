@@ -19,11 +19,14 @@
   --line: #24365A;
   --ink: #EEF2F8;
   --muted: #8E9DB8;
-  --gold: #F2B33D;       /* toss-up / focus */
-  --gold-lean: #B98A36;  /* lean */
-  --gold-likely: #6F5A35;/* likely */
-  --seat-up: #253A5E;    /* on the ballot, not competitive */
-  --seat-none: #152238;  /* no race */
+  /* map ladder, checked for contrast on a projector: no race < on ballot < likely < lean < toss-up */
+  --gold: #FFC940;       /* toss-up / focus */
+  --gold-lean: #D9952B;  /* lean */
+  --gold-likely: #A8895A;/* likely */
+  --seat-up: #6E7B92;    /* on the ballot, not competitive (cool gray) */
+  --seat-none: #3B475C;  /* no race (slate) */
+  --map-ink: #121A26;    /* labels on light fills */
+  --border: rgba(238,242,248,0.55);
   --party-a: #8796B0;    /* seat tone 1 (labelled R) */
   --party-b: #C2AE8C;    /* seat tone 2 (labelled D) */
   --closed: #4FB3A9;     /* polls closed */
@@ -96,26 +99,26 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--gold); outline-
 
 /* state map */
 .map { width: 906px; height: 567px; display: block; overflow: visible; }
-.st path, .st rect { fill: var(--seat-none); stroke: var(--studio); stroke-width: 1.1; stroke-linejoin: round; transition: fill 420ms ease, opacity 420ms ease; }
+.st path, .st rect { fill: var(--seat-none); stroke: var(--border); stroke-width: 1; stroke-linejoin: round; transition: fill 420ms ease, opacity 420ms ease; }
 .st text {
   font-family: var(--font-display); font-weight: 700; font-size: 15px; letter-spacing: 0.04em;
   text-anchor: middle; dominant-baseline: central; pointer-events: none;
-  fill: rgba(238,242,248,0.38); transition: fill 420ms ease;
+  fill: rgba(238,242,248,0.85); transition: fill 420ms ease;
 }
-.st .lead { stroke: var(--line); stroke-width: 1; fill: none; }
+.st .lead { stroke: rgba(238,242,248,0.35); stroke-width: 1; fill: none; }
 .st.up path, .st.up rect { fill: var(--seat-up); }
-.st.up text { fill: rgba(238,242,248,0.8); }
+.st.up text { fill: var(--map-ink); }
 .st.likely path, .st.likely rect { fill: var(--gold-likely); }
-.st.likely text { fill: var(--ink); }
+.st.likely text { fill: var(--map-ink); }
 .st.lean path, .st.lean rect { fill: var(--gold-lean); }
-.st.lean text { fill: #1A1406; }
+.st.lean text { fill: var(--map-ink); }
 .st.tossup path, .st.tossup rect { fill: var(--gold); }
-.st.tossup text { fill: #1A1406; }
+.st.tossup text { fill: var(--map-ink); }
 .st.closed path, .st.closed rect { fill: var(--closed); }
 .st.closed text { fill: #06201D; }
 .st.dim { opacity: 0.3; }
 .st.focus path.shape, .st.focus rect { stroke: var(--ink); stroke-width: 3.5; }
-.st.focus.up path.shape { fill: #36578A; }
+.st.focus.up path.shape { fill: #94A1B8; }
 .st.flash path.shape, .st.flash rect { animation: flash 950ms ease-out; }
 @keyframes flash { 0% { stroke: var(--ink); stroke-width: 14; stroke-opacity: 0.9; } 100% { stroke-width: 3.5; stroke-opacity: 1; } }
 .st.callout text { font-size: 13px; }
@@ -145,8 +148,8 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--gold); outline-
 }
 .chip.tossup { background: var(--gold); color: #1A1406; border-color: var(--gold); }
 .chip.lean { background: var(--gold-lean); color: #1A1406; border-color: var(--gold-lean); }
-.chip.likely { background: var(--gold-likely); color: var(--ink); border-color: var(--gold-likely); }
-.chip.solid { background: var(--seat-up); color: var(--ink); border-color: var(--seat-up); }
+.chip.likely { background: var(--gold-likely); color: var(--map-ink); border-color: var(--gold-likely); }
+.chip.solid { background: var(--seat-up); color: var(--map-ink); border-color: var(--seat-up); }
 .cands { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 12px; }
 .cand { border-top: 3px solid var(--ink); padding-top: 10px; min-width: 0; }
 .cand .nm { font-family: var(--font-display); font-weight: 700; font-size: 32px; line-height: 1.05; }
@@ -180,7 +183,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--gold); outline-
 .dots { display: grid; grid-template-columns: repeat(29, 24px); gap: 7px; }
 .dots i { width: 24px; height: 24px; border-radius: 50%; background: var(--seat-up); }
 .dots i.maj { background: var(--gold-likely); }
-.dots i.line { background: var(--gold); box-shadow: 0 0 0 4px rgba(242,179,61,0.25); }
+.dots i.line { background: var(--gold); box-shadow: 0 0 0 4px rgba(255,201,64,0.28); }
 .houselabel { display: flex; align-items: baseline; gap: 18px; font-family: var(--font-display); font-weight: 800; text-transform: uppercase; }
 .houselabel .n { font-family: var(--font-mono); font-weight: 600; font-size: 96px; color: var(--gold); line-height: 0.9; }
 .houselabel .t { font-size: 40px; }
