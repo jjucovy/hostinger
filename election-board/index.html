@@ -217,7 +217,8 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--gold); outline-
 .controls .pos { font-family: var(--font-mono); color: var(--ink); min-width: 9ch; text-align: center; }
 .controls kbd { font-family: var(--font-mono); font-size: 12px; border: 1px solid var(--line); border-radius: 4px; padding: 1px 5px; color: var(--ink); }
 body.clean .controls { opacity: 0; pointer-events: none; }
-body.clean .controls:focus-within { opacity: 1; pointer-events: auto; }
+body.clean .controls:has(:focus-visible) { opacity: 1; pointer-events: auto; }
+body.clean { cursor: none; }
 
 /* state picker (used in the overlay on the board and in the operator desk) */
 .picker { display: flex; flex-direction: column; gap: 18px; }
@@ -808,7 +809,11 @@ $("overlay").addEventListener("click", (e) => { if (e.target === $("overlay")) c
 document.querySelectorAll("[data-pick]").forEach((b) => b.addEventListener("click", () => openSheet(b.dataset.pick)));
 $("prevBtn").addEventListener("click", prev);
 $("nextBtn").addEventListener("click", next);
-$("cleanBtn").addEventListener("click", () => document.body.classList.toggle("clean"));
+function toggleClean() {
+  const on = document.body.classList.toggle("clean");
+  if (on && document.activeElement && document.activeElement.blur) document.activeElement.blur(); // a focused button would keep the strip visible
+}
+$("cleanBtn").addEventListener("click", toggleClean);
 $("fsBtn").addEventListener("click", async () => {
   try { if (document.fullscreenElement) await document.exitFullscreen(); else await document.documentElement.requestFullscreen(); } catch (e) {}
 });
@@ -876,7 +881,7 @@ if (MODE === "operator") {
     const k = e.key;
     if (k === "ArrowRight" || k === "PageDown" || k === " ") { e.preventDefault(); next(); }
     else if (k === "ArrowLeft" || k === "PageUp") { e.preventDefault(); prev(); }
-    else if (k === "h" || k === "H") document.body.classList.toggle("clean");
+    else if (k === "h" || k === "H") toggleClean();
     else if (k === "r" || k === "R") { if (!race && STEPS[step].clock) startClock(); }
     else if (k === "f" || k === "F") $("fsBtn").click();
     else if (k === "s" || k === "S") openSheet("senate");
