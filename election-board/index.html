@@ -322,7 +322,7 @@ body.operator .opdesk { display: flex; flex-direction: column; gap: 18px; max-wi
   <div class="stage" id="stage" role="region" aria-label="Election board">
     <header class="top">
       <div class="brand"><span class="mark" aria-hidden="true"></span>Decision Desk <span class="yr">2026</span></div>
-      <div class="seg" id="segLabel">Segment 4 · Senate</div>
+      <div class="seg" id="segLabel">Senate</div>
       <div class="date"><span class="dot" aria-hidden="true"></span>Election Day · Tue Nov 3</div>
     </header>
     <main class="main">
@@ -750,7 +750,7 @@ function show(i) {
   stopClock(); race = null;
   step = Math.max(0, Math.min(STEPS.length - 1, i));
   const s = STEPS[step];
-  setView(s.view); $("segLabel").textContent = s.seg;
+  setView(s.view); $("segLabel").textContent = s.seg.replace(/^Segment \d+ · /, ""); // segment numbers are for the operator only
   s.run();
   if (s.flash) flashState(s.flash);
   $("pos").textContent = `${step + 1} / ${STEPS.length}`;
