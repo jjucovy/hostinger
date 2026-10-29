@@ -247,7 +247,7 @@ body.clean { cursor: none; }
 /* operator desk */
 .opdesk { display: none; }
 body.operator { overflow: auto; }
-body.operator .viewport, body.operator .controls, body.operator .overlay { display: none; }
+body.operator .controls, body.operator .overlay { display: none; }
 body.operator .opdesk { display: flex; flex-direction: column; gap: 18px; max-width: 1240px; margin: 0 auto; padding-block: 18px 40px; }
 .ophead { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
 .ophead .brand { font-size: 26px; }
@@ -262,7 +262,17 @@ body.operator .opdesk { display: flex; flex-direction: column; gap: 18px; max-wi
 .help b { color: var(--ink); }
 .help ol { margin: 6px 0 0; padding-left: 20px; }
 
-.now { display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: center; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; }
+.pvbox { position: relative; width: 100%; aspect-ratio: 16 / 9; max-width: 100%; border-radius: 8px; overflow: hidden; border: 1px solid var(--line); background: var(--studio); }
+.pvbox .viewport { position: absolute; inset: 0; width: auto; height: auto; }
+.pvbox .stage { pointer-events: none; }
+.pv { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.live { align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-display); font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; background: rgba(10,19,34,0.85); border: 1px solid var(--line); border-radius: 4px; padding: 2px 8px; }
+.live i { width: 8px; height: 8px; border-radius: 50%; background: var(--warn); }
+.live.on i { background: #E5484D; animation: blink 1.6s ease-in-out infinite; }
+@keyframes blink { 50% { opacity: 0.35; } }
+.pvbox.off .viewport { opacity: 0.35; }
+.nowinfo { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.now { display: grid; grid-template-columns: minmax(260px, 440px) 1fr; gap: 20px; align-items: start; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; }
 .now .lbl { font-family: var(--font-display); font-weight: 600; font-size: 15px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); }
 .now .what { font-family: var(--font-display); font-weight: 800; font-size: 34px; text-transform: uppercase; line-height: 1.05; margin-top: 2px; }
 .now .cue { font-size: 16px; color: var(--muted); margin-top: 6px; line-height: 1.4; max-width: 70ch; }
@@ -371,15 +381,18 @@ body.operator .opdesk { display: flex; flex-direction: column; gap: 18px; max-wi
     </ol>
   </div>
   <div class="now">
-    <div>
-      <div class="lbl">On the board now</div>
-      <div class="what" id="nowWhat">—</div>
-      <div class="cue" id="nowCue"></div>
-    </div>
-    <div class="navbtns">
-      <button type="button" id="opPrev">◀ Back</button>
-      <span class="pos" id="opPos">– / 14</span>
-      <button type="button" class="next" id="opNext">Next ▶</button>
+    <div class="pv"><span class="live" id="liveTag"><i></i><span id="liveText">Not connected</span></span><div class="pvbox off" id="pvbox" aria-label="Live preview of the board"></div></div>
+    <div class="nowinfo">
+      <div>
+        <div class="lbl">On the board now</div>
+        <div class="what" id="nowWhat">—</div>
+        <div class="cue" id="nowCue"></div>
+      </div>
+      <div class="navbtns">
+        <button type="button" id="opPrev">◀ Back</button>
+        <span class="pos" id="opPos">– / 14</span>
+        <button type="button" class="next" id="opNext">Next ▶</button>
+      </div>
     </div>
   </div>
   <div class="tabs" role="tablist">
@@ -820,6 +833,8 @@ $("fsBtn").addEventListener("click", async () => {
 $("toOperator").addEventListener("click", () => { location.hash = "operator"; location.reload(); });
 $("toBoard").addEventListener("click", () => { history.replaceState(null, "", location.pathname + location.search); location.reload(); });
 
+function fit() { const vp = $("viewport"); if (!vp.clientWidth) return; const sc = Math.min(vp.clientWidth / 1600, vp.clientHeight / 900); $("stage").style.transform = `translate(-50%, -50%) scale(${sc})`; }
+
 /* ---------- operator mode ---------- */
 let opTab = "script", remote = null, lastSeen = 0;
 function renderOp() {
@@ -842,12 +857,24 @@ function setStatus() {
   $("status").classList.toggle("ok", !!ok);
   $("statusText").textContent = !chan ? "This browser can't link windows; use the board's own controls" : ok ? "Board connected" : "No board window found";
   $("help").hidden = !!ok;
+  $("liveTag").classList.toggle("on", !!ok);
+  $("liveText").textContent = ok ? "Live" : "Not connected";
+  $("pvbox").classList.toggle("off", !ok);
 }
 
 if (MODE === "operator") {
   document.body.classList.add("operator");
   document.title = "Decision Desk Operator";
-  if (chan) chan.onmessage = (e) => { const m = e.data || {}; if (m.t === "state") { lastSeen = Date.now(); const changed = JSON.stringify(m) !== JSON.stringify(remote); remote = m; setStatus(); if (changed) renderOp(); } };
+  /* live preview: the board's own stage, moved into the operator desk and driven by the board's state */
+  $("pvbox").appendChild($("viewport"));
+  let shownKey = "";
+  function mirror(m) {
+    const key = m.race ? `race:${m.race.kind}:${m.race.st}` : `step:${m.step}`;
+    if (key === shownKey) return;
+    shownKey = key;
+    if (m.race) showRace(m.race.kind, m.race.st); else show(m.step);
+  }
+  if (chan) chan.onmessage = (e) => { const m = e.data || {}; if (m.t === "state") { lastSeen = Date.now(); const changed = JSON.stringify(m) !== JSON.stringify(remote); remote = m; setStatus(); mirror(m); if (changed) renderOp(); } };
   document.querySelector(".tabs").addEventListener("click", (e) => { const b = e.target.closest("[data-tab]"); if (b) { opTab = b.dataset.tab; renderOp(); } });
   $("tabBody").addEventListener("click", (e) => {
     const s = e.target.closest("[data-step]"); if (s) { send({ t: "go", step: +s.dataset.step }); return; }
@@ -855,14 +882,16 @@ if (MODE === "operator") {
   });
   $("opNext").addEventListener("click", () => send({ t: "next" }));
   $("opPrev").addEventListener("click", () => send({ t: "prev" }));
-  $("opReplay").addEventListener("click", () => send({ t: "replay" }));
+  $("opReplay").addEventListener("click", () => { send({ t: "replay" }); if (remote && !remote.race && STEPS[remote.step]?.clock) startClock(); });
   $("opResume").addEventListener("click", () => send({ t: "resume" }));
   document.addEventListener("keydown", (e) => {
     if (e.key === "ArrowRight" || e.key === "PageDown" || (e.key === " " && !e.target.closest("button"))) { e.preventDefault(); send({ t: "next" }); }
     else if (e.key === "ArrowLeft" || e.key === "PageUp") { e.preventDefault(); send({ t: "prev" }); }
-    else if (e.key === "r" || e.key === "R") send({ t: "replay" });
+    else if (e.key === "r" || e.key === "R") $("opReplay").click();
   });
   const ping = () => { send({ t: "hello" }); setStatus(); };
+  try { new ResizeObserver(fit).observe($("viewport")); } catch (e) { addEventListener("resize", fit); }
+  show(0); fit();
   ping(); setInterval(ping, 1500);
   renderOp();
 } else {
@@ -889,7 +918,6 @@ if (MODE === "operator") {
     else if (k === "u" || k === "U") openSheet("house");
     else if (k === "Home") show(0);
   });
-  function fit() { const vp = $("viewport"); const s = Math.min(vp.clientWidth / 1600, vp.clientHeight / 900); $("stage").style.transform = `translate(-50%, -50%) scale(${s})`; }
   addEventListener("resize", fit); fit();
   if (race) showRace(race.kind, race.st); else show(step);
 }
